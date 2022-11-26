@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oomer
+  name: oomer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oomer
+  template:
+    metadata:
+      labels:
+        app: oomer
+    spec:
+      containers:
+      - image: ghcr.io/jdockerty/oomer:0.0.1
+        name: oomer 
+        resources:
+          requests:
+            cpu: '100m'
+            memory: '128Mi'
+          limits:
+            cpu: '100m'
+            memory: '128Mi'
