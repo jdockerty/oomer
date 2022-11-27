@@ -21,8 +21,9 @@ spec:
         app: oomer
     spec:
       containers:
-      - image: ghcr.io/jdockerty/oomer:0.0.1
+      - image: ghcr.io/jdockerty/oomer:0.0.2
         name: oomer 
+        terminationMessagePath: "/tmp/oomed-pod.log"
         resources:
           requests:
             cpu: '100m'
