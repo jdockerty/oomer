@@ -12,4 +12,6 @@ FROM scratch
 
 COPY --from=builder /app/oomer /app/oomer
 
+USER 1001
+
 ENTRYPOINT ["/app/oomer"]
