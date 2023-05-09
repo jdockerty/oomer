@@ -6,8 +6,9 @@ import (
 )
 
 const (
-    // Set in the Deployment manifest.
+	// Set in the Deployment manifest.
 	terminationMessagePath = "/tmp/oomed-pod.log"
+	message                = "OOMKilled"
 )
 
 func main() {
@@ -15,12 +16,13 @@ func main() {
 	if err != nil {
 		log.Fatalf("unable to create %s: %s", terminationMessagePath, err)
 	}
+	defer f.Close()
 
-	_, err = f.WriteString("OOMKilled")
+	_, err = f.WriteString(message)
 	if err != nil {
 		log.Fatalf("unable to write to %s: %s", terminationMessagePath, err)
 	}
-	f.Close()
 
+	log.Println(message)
 	os.Exit(137)
 }
